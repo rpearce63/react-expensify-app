@@ -6,6 +6,7 @@ import configureStore from './store/configureStore';
 import { addExpense } from './actions/expenses';
 import { setTextFilter } from './actions/filters';
 import getVisibleExpenses from './selectors/expenses';
+import moment from 'moment';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
@@ -15,10 +16,10 @@ const store = configureStore();
 //     state = store.getState();
 //     //console.log(state);
 // })
-
-store.dispatch(addExpense({ description: 'Water bill', amount: 10000, createdAt: 1000}));
-store.dispatch(addExpense({description: 'Gas bill', amount: 4000}));
-store.dispatch(addExpense({description: 'Rent', amount: 109500}));
+const now = moment().valueOf();
+store.dispatch(addExpense({ description: 'Water bill', amount: 10000, createdAt: now}));
+store.dispatch(addExpense({description: 'Gas bill', amount: 4000, createdAt: moment('2018-05-22').valueOf()}));
+store.dispatch(addExpense({description: 'Rent', amount: 109500, createdAt: moment('2018-05-01').valueOf()}));
 //store.dispatch(setTextFilter('water'));
 
 // setTimeout(() => {

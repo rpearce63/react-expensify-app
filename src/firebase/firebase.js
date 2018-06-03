@@ -13,18 +13,20 @@ const config = {
 
   const database = firebase.database();
 
+  export { firebase, database as default };
+
   // child_removed
-  database.ref('expenses').on('child_removed', (snapshot) => {
-    console.log(snapshot.key, snapshot.val());
-  });
+//   database.ref('expenses').on('child_removed', (snapshot) => {
+//     console.log(snapshot.key, snapshot.val());
+//   });
 
-  database.ref('expenses').on('child_changed', (snapshot) => {
-    console.log(snapshot.key, snapshot.val());
-  });
+//   database.ref('expenses').on('child_changed', (snapshot) => {
+//     console.log(snapshot.key, snapshot.val());
+//   });
 
-  database.ref('expenses').on('child_added', (snapshot) => {
-    console.log('child_added: ', snapshot.key, snapshot.val());
-  });
+//   database.ref('expenses').on('child_added', (snapshot) => {
+//     console.log('child_added: ', snapshot.key, snapshot.val());
+//   });
 
 //   database.ref('expenses')
 //     .once('value')

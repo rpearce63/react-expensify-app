@@ -51,18 +51,14 @@ test('should edit expense on firebase', (done) => {
         const actions = store.getActions();
         expect(actions[0]).toEqual({
             type: 'EDIT_EXPENSE',
-            id: id,
-            updates: { ...updates }
+            id,
+            updates
         });
         return database.ref(`expenses/${id}`).once('value');
         
     }).then((snapshot) => {
-        expect(snapshot.val()).toEqual({
-            description: updates.description,
-            amount: updates.amount,
-            note: expenses[1].note,
-            createdAt: expenses[1].createdAt
-        });
+        expect(snapshot.val().amount).toBe(updates.amount);
+        expect(snapshot.val().description).toBe(updates.description);
         done();
     });
 });
